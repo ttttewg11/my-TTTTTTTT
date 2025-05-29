@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คลังบทความสาธารณะ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗂️ ข้อมูล</h1>
+            <p>แหล่งรวมความรู้และบทความที่เป็นประโยชน์สำหรับทุกคน</p>
+        </div>
+
+        <div class="controls">
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalArticles">0</div>
+                    <div class="stat-label">บทความทั้งหมด</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalCategories">0</div>
+                    <div class="stat-label">หมวดหมู่</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="todayArticles">0</div>
+                    <div class="stat-label">บทความวันนี้</div>
+                </div>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="🔍 ค้นหาบทความ...">
+                <select id="categoryFilter">
+                    <option value="">📁 ทุกหมวดหมู่</option>
+                </select>
+                <button class="btn btn-primary" onclick="toggleForm()">✍️ เขียนบทความใหม่</button>
+            </div>
+        </div>
+
+        <div class="form-section" id="articleForm">
+            <h2 style="margin-bottom: 20px; color: #4a5568;">✍️ เขียนบทความใหม่</h2>
+            <form onsubmit="addArticle(event)">
+                <div class="form-group">
+                    <label for="title">หัวข้อบทความ</label>
+                    <input type="text" id="title" required placeholder="ใส่หัวข้อบทความ...">
+                </div>
+                <div class="form-group">
+                    <label for="category">หมวดหมู่</label>
+                    <select id="category" required>
+                        <option value="">เลือกหมวดหมู่</option>
+                        <option value="เทคโนโลยี">เทคโนโลยี</option>
+                        <option value="สุขภาพ">สุขภาพ</option>
+                        <option value="การศึกษา">การศึกษา</option>
+                        <option value="ธุรกิจ">ธุรกิจ</option>
+                        <option value="ท่องเที่ยว">ท่องเที่ยว</option>
+                        <option value="อาหาร">อาหาร</option>
+                        <option value="กีฬา">กีฬา</option>
+                        <option value="ศิลปะ">ศิลปะ</option>
+                        <option value="อื่นๆ">อื่นๆ</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="author">ผู้เขียน</label>
+                    <input type="text" id="author" required placeholder="ชื่อผู้เขียน">
+                </div>
+                <div class="form-group">
+                    <label for="content">เนื้อหาบทความ</label>
+                    <textarea id="content" required placeholder="เขียนเนื้อหาบทความ..."></textarea>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <button type="submit" class="btn btn-primary">💾 บันทึกบทความ</button>
+                    <button type="button" class="btn btn-secondary" onclick="toggleForm()">❌ ยกเลิก</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="articlesContainer">
+            <div class="articles-grid" id="articlesGrid">
+                <!-- บทความจะแสดงที่นี่ -->
+            </div>
+            <div class="no-articles" id="noArticles" style="display: none;">
+                <p>📝 ยังไม่มีบทความ เริ่มเขียนบทความแรกกันเลย!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
